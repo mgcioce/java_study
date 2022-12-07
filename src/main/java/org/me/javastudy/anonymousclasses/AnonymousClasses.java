@@ -1,7 +1,32 @@
 package org.me.javastudy.anonymousclasses;
 
 public class AnonymousClasses {
+
+    private String notFinal;
+    private final String FINAL = "This ain't changin'";
+
+    public AnonymousClasses(String notFinal) {
+        this.notFinal = notFinal;
+    }
+
+    public String getNotFinal() {
+        return notFinal;
+    }
+
+    public void setNotFinal(String notFinal) {
+        this.notFinal = notFinal;
+    }
+
+    public String getFINAL() {
+        return FINAL;
+    }
+
     public static void main(String[] args) {
+        AnonymousClasses ac = new AnonymousClasses("another object can be assigned to the nonFinal class field bc it isn't final");
+        ac.examples();
+    }
+
+    public void examples(){
         System.out.println("exploring anonymous classes");
 
         //1) A regular class using an overridden method to create an anonymous class instance
@@ -49,5 +74,18 @@ public class AnonymousClasses {
             System.out.println(message);
         };
         lambdaExpressionImplementation.interfaceMethod("anonymous!");
+
+        //5) Anonymous classes have access to members of the class it's enclosed by
+        System.out.println("an anonymous class also has access to the members of the class it's encapsulated in (i.e. defined in)");
+        RegularInterface regularInterface2 = new RegularInterface() {
+            @Override
+            public void interfaceMethod(String message) {
+                AnonymousClasses.this.setNotFinal(message);
+                System.out.println("I can reference the FINAL variable because it's final: " + FINAL);
+            }
+        };
+        System.out.println(getNotFinal());
+        regularInterface2.interfaceMethod("member access baybee");
+        System.out.println(getNotFinal());
     }
 }
