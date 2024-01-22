@@ -2,24 +2,13 @@ package org.me.javastudy.observerpattern.example;
 
 public abstract class Character extends Node  {
 
-    private Integer currentHealth;
-    private Integer maxHealth;
+    private Health health;
 
-
-
-    public Integer getCurrentHealth() {
-        return currentHealth;
+    public Health getHealth() {
+        return health;
     }
 
-    public void setCurrentHealth(Integer currentHealth) {
-        this.currentHealth = currentHealth;
-    }
-
-    public Integer getMaxHealth() {
-        return maxHealth;
-    }
-
-    public void setMaxHealth(Integer maxHealth) {
-        this.maxHealth = maxHealth;
+    public void setHealth(Health health) {
+        this.health = health;
     }
 }

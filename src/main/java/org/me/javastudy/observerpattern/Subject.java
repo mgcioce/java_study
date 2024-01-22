@@ -1,13 +1,11 @@
 package org.me.javastudy.observerpattern;
 
-import java.util.Observer;
-
 public interface Subject {
 
-    public default void subscribe(Observer observer) {
-        
-    }
-    public default void unsubscribe(Observer observer) {
+    //any implementing class should define :
+    // 1) a collection of Observers that are subscribed to the subject instance
+    // 2) a private method for calling the update() method of the observers when the internal state of the subject changes
 
-    }
+    public void subscribe(Observer observer);
+    public void unsubscribe(Observer observer);
 }

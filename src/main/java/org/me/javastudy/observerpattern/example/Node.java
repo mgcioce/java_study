@@ -1,10 +1,14 @@
 package org.me.javastudy.observerpattern.example;
 
-import org.me.javastudy.observerpattern.Observer;
-
-import java.util.List;
-
 public abstract class Node {
 
-    private List<Observer> observerList;
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
